@@ -33,19 +33,18 @@ public class ProblemaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(nueva);
     }
 
-    // GET /api/incidencias → Obtener todas las incidencias
+
     @GetMapping
     public ResponseEntity<List<Problema>> obtenerTodas() {
         return ResponseEntity.ok(service.obtenerTodas());
     }
 
-    // GET /api/incidencias/{id} → Obtener incidencia por ID
     @GetMapping("/{id}")
     public ResponseEntity<Problema> obtenerPorId(@PathVariable Long id) {
         return ResponseEntity.ok(service.obtenerPorId(id));
     }
 
-    // PUT /api/incidencias/{id} → Actualizar incidencia completa
+
     @PutMapping("/{id}")
     public ResponseEntity<Problema> actualizar(
             @PathVariable Long id,
@@ -53,32 +52,31 @@ public class ProblemaController {
         return ResponseEntity.ok(service.actualizar(id, dto));
     }
 
-    // DELETE /api/incidencias/{id} → Eliminar incidencia
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         service.eliminar(id);
         return ResponseEntity.noContent().build();
     }
 
-    // GET /api/incidencias/buscar/estado/{estado} → Buscar por estado
+
     @GetMapping("/buscar/estado/{estado}")
     public ResponseEntity<List<Problema>> buscarPorEstado(@PathVariable String estado) {
         return ResponseEntity.ok(service.buscarPorEstado(estado));
     }
 
-    // GET /api/incidencias/buscar/prioridad/{prioridad} → Buscar por prioridad
+ 
     @GetMapping("/buscar/prioridad/{prioridad}")
     public ResponseEntity<List<Problema>> buscarPorPrioridad(@PathVariable String prioridad) {
         return ResponseEntity.ok(service.buscarPorPrioridad(prioridad));
     }
 
-    // GET /api/incidencias/buscar/usuario/{usuario} → Buscar por usuario
+
     @GetMapping("/buscar/usuario/{usuario}")
     public ResponseEntity<List<Problema>> buscarPorUsuario(@PathVariable String usuario) {
         return ResponseEntity.ok(service.buscarPorUsuario(usuario));
     }
 
-    // GET /api/incidencias/ordenadas/prioridad → Ordenar por prioridad (CRITICA primero)
     @GetMapping("/ordenadas/prioridad")
     public ResponseEntity<List<Problema>> obtenerOrdenadasPorPrioridad() {
         return ResponseEntity.ok(service.obtenerOrdenadasPorPrioridad());

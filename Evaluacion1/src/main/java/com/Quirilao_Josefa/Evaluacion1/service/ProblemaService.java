@@ -59,7 +59,7 @@ public class ProblemaService {
 
     public void eliminar(Long id) {
         if (!repository.existePorId(id)) {
-            throw new IncidenciaNotFoundException(id);
+            throw new ProblemaNotFoundException(id);
         }
         repository.eliminar(id);
     }
